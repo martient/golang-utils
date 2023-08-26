@@ -1,0 +1,27 @@
+# Add 'repo' label to any root file changes
+'repository config':
+- '.github/**'
+- '.vscode/**'
+
+log:
+- 'utils/log.go'
+
+"default interface value":
+- 'utils/interfaceDefaultValue.go'
+
+test:
+- src/**/*_test.go
+
+docs:
+- '**.md'
+
+setup:
+- '.github/**'
+- 'Makefile'
+- 'go.mod'
+- 'go.sum'
+- '.gitignore'
+
+package:
+- 'go.mod'
+- 'go.sum'
