@@ -31,20 +31,10 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           WITH_V: true
-      # - uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: 0
-      # - run: git fetch --force --tags
-      # - uses: actions/setup-go@v4
-      #   with:
-      #     go-version: stable
-      # - uses: goreleaser/goreleaser-action@v4
-      #   with:
-      #     distribution: goreleaser
-      #     version: latest
-      #     args: release --clean
-      #   env:
-      #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          PRERELEASE: false
+          PATCH_STRING_TOKEN: "fix"
+          MINOR_STRING_TOKEN: "feat"
+          NONE_STRING_TOKEN: " "
           
   nightly:
     if: ${{ github.ref_name == 'develop' }}
@@ -64,18 +54,3 @@ jobs:
           PATCH_STRING_TOKEN: "fix"
           MINOR_STRING_TOKEN: "feat"
           NONE_STRING_TOKEN: " "
-
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - run: git fetch --force --tags
-      - uses: actions/setup-go@v4
-        with:
-          go-version: stable
-      - uses: goreleaser/goreleaser-action@v4
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --clean
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
