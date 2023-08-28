@@ -24,13 +24,23 @@ func LogWarning(message string, service string, args ...interface{}) {
 	}
 }
 
-func LogError(message string, service string, args ...interface{}) {
+func LogErrorInterface(message string, service string, args ...interface{}) {
 	if len(service) != 0 {
 		log.WithFields(log.Fields{
 			"service": service,
 		}).Errorf(message, args...)
 	} else {
 		log.Errorf(message, args...)
+	}
+}
+
+func LogError(message string, service string, err error) {
+	if len(service) != 0 {
+		log.WithFields(log.Fields{
+			"service": service,
+		}).Errorf(message, err)
+	} else {
+		log.Errorf(message, err)
 	}
 }
 
